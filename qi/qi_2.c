@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void OneLine(int, int);
+void OneLine(int);
 void square(int, int);
 
 void square(int input, int times){
@@ -10,16 +10,16 @@ void square(int input, int times){
         return;
     }else{
         //printf("Line %d: ", times);
-        OneLine(times, input);
+        OneLine(input);
     }square(input, times+1);
 }
-void OneLine(int star, int conti){
+void OneLine(int conti){
     if(conti == 0){
         printf("\n");
         return;
     }
     printf("* ");
-    OneLine(star, conti-1);
+    OneLine(conti-1);
 }
 
 
