@@ -13,13 +13,13 @@ void square(int input, int times){
         OneLine(times, input);
     }square(input, times+1);
 }
-void OneLine(int star, int stop){
-    if(stop == 0){
+void OneLine(int star, int conti){
+    if(conti == 0){
         printf("\n");
         return;
     }
     printf("* ");
-    OneLine(star, stop-1);
+    OneLine(star, conti-1);
 }
 
 
