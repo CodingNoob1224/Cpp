@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <time.h>
+
+string nums[13] = {" A", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", " J", " Q", " K"};
+string suits[4] = {"S", "H", "D", "C"};
+
+class Card {
+    public:
+        string num;
+        string suit;
+};
+
+class Deck {
+    public:
+        Card card[52];
+
+        void initialize() {
+            for (int i=0; i<4; i++) {
+                for (int j=0; j<13; j++) {
+                    card[i*13 + j].num = nums[j];
+                    card[i*13 + j].suit = suits[i];
+                }
+            }
+        }
+
+        void Shuffle() {
+            for (int i=0; i<52; i++) {
+                int r = rand() % 52;
+                string n, s;
+
+                n = card[i].num;
+                s = card[i].suit;
+
+                card[i].num = card[r].num;
+                card[i].suit = card[r].suit;
+
+                card[r].num = n;
+                card[r].suit = s;
+
+            }
+        }
+
+        void Display() {
+            cout<<"Play1"<<"  "<<"Play2"<<"  "<<"Play3"<<"  "<<"Play4"<<endl;
+            for (int i=0; i<52; i++) {
+                cout<<"["<<card[i].suit<<" "<<card[i].num<<"]";
+                if( i%4==3)
+                    cout<<endl;
+                else
+                    cout<<" ";
+            }
+        }
+
+
+};
+
+int main() {
+    srand(time(NULL));
+
+    Deck deck;
+    deck.initialize();
+    deck.Shuffle();
+    deck.Display();
+    
+
+    return 0;
+}
